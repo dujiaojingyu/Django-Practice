@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pagination .page{
+            display: inline-block;
+            padding: 5px;
+            background-color: aqua;
+            margin: 5px;
+        }
+        .pagination .page.active{
+            background-color: red;
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for item in li %}
+            {% include 'li.html' %}
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        <!--<a href="/user_list/?p=1">1</a>
+            <a href="/user_list/?p=3">2</a>
+            <a href="/user_list/?p=4">3</a>-->
+        {{ page_str }}
+    </div>
+</body>
+</html>

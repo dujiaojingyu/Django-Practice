@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        label{
+            display: inline-block;
+        }
+        .hide{
+            display: none;
+        }
+        .c1{
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9;
+            background-color: black;
+            opacity: 0.6;
+        }
+        .c2{
+            height: 600px;
+            width: 700px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            background-color: white;
+            margin-left: -350px;
+            margin-top: -300px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body style="margin: 0">
+    <div style="background-color: #333333;height: 80px"></div>
+    <div>
+        <input  type="button" value="增加" onclick="ShowModle()"/>
+    </div>
+
+   <!--<div>-->
+        <!--<form>-->
+
+        <!--</form>-->
+    <!--</div> -->
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>学号</th>
+                    <th>班级</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for iter in student_date%}
+                <tr>
+                    <td>{{ iter.name }}</td>
+                    <td>{{ iter.gender }}</td>
+                    <td>{{ iter.stu_ID }}</td>
+                    <td>{{ iter.class_stu }}</td>
+                    <td><a href="/userdetail-{{iter.id}}/">查看详细</a></td>
+                    <td><a href="/user_del-{{iter.id}}/">删除</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 遮罩开始-->
+    <div id="i1" class="c1 hide" ></div>
+    <!-- 遮罩结束-->
+
+    <!-- 弹框开始-->
+    <div id="i2" class="c2 hide">
+        <form action="/home/" method="post">
+            <P>
+                <label>姓名:</label>
+                <input type="text" name="name"/>
+            </P>
+            <P>
+                <label>学号:</label>
+                <input type="text" name="stu_ID"/>
+            </P>
+            <P>
+                <label>性别:</label>
+                <input type="text" name="gender"/>
+            </P>
+            <P>
+                <label>班级:</label>
+                <input type="text" name="class_stu"/>
+            </P>
+            <P>
+                <label>座位:</label>
+                <input type="text" name="seat"/>
+            </P>
+            <P>
+                <label>课程:</label>
+                <input type="text" name="course"/>
+            </P>
+            <P>
+                <label>成绩:</label>
+                <input type="text" name="score"/>
+            </P>
+            <P>
+                <label>状态:</label>
+                <input type="text" name="status"/>
+            </P>
+            <input type="button" value="取消" onclick="HideModle()"/>
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+    <!-- 弹框开始-->
+    <script>
+        function ShowModle() {
+            document.getElementById('i1').classList.remove('hide');
+            document.getElementById('i2').classList.remove('hide');
+        }
+        function HideModle() {
+            document.getElementById('i1').classList.add('hide');
+            document.getElementById('i2').classList.add('hide');
+        }
+    </script>
+</body>
+</html>
